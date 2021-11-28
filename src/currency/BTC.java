@@ -1,6 +1,6 @@
 package currency;
 
-public class BTC extends Currency implements IsFreeConverted, CryptoCurrency {
+public class BTC extends Currency implements CryptoCurrency {
     public BTC(double RateNBU) {
         super(RateNBU);
     }
@@ -10,10 +10,6 @@ public class BTC extends Currency implements IsFreeConverted, CryptoCurrency {
         return "BTC";
     }
 
-    @Override
-    public boolean isFreeConv() {
-        return false;
-    }
 
     @Override
     public boolean cryptoCurrency() {
@@ -22,7 +18,6 @@ public class BTC extends Currency implements IsFreeConverted, CryptoCurrency {
 
     @Override
     public double exchangeUAHtoCurrency (double numberOfUAH){
-        double tempResult = numberOfUAH / getRateBuy(); //amount which we get in foreign currency
         System.out.println("The operation of exchange rejected by NBU. You amount in UAH " + numberOfUAH);
         return numberOfUAH;
     }
