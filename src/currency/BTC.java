@@ -9,15 +9,14 @@ public class BTC extends Currency implements CryptoCurrency {
     public String getCurrencyName() {
         return "BTC";
     }
-
-
+    
     @Override
     public boolean cryptoCurrency() {
         return true;
     }
 
     @Override
-    public double exchangeUAHtoCurrency (double numberOfUAH){
+    public double exchangeUAHtoCurrency(double numberOfUAH) {
         System.out.println("The operation of exchange rejected by NBU. You amount in UAH " + numberOfUAH);
         return numberOfUAH;
     }
