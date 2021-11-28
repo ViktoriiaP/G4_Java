@@ -8,6 +8,9 @@ package lesson2HW2;
  * Если значение масива меньше varForComparing - massive[i] +" Value is less than " + varForComparing
  */
 public class WorkWithMassive {
+    private int[][] matrix;
+    private int m;
+    private int n;
 
     public static void analyzeMassive(int[] massive, int varForComparing) {
 
@@ -47,7 +50,7 @@ public class WorkWithMassive {
      * 8 1 1
      */
     public int[][] matrixCreate(int m, int n, int filler) {
-        int[][] matrix = new int[m][n];
+        matrix = new int[m][n];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = filler;
@@ -58,14 +61,13 @@ public class WorkWithMassive {
     }
 
     public boolean check(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            if (matrix[i].length == matrix.length) {
-            } else {
-                System.out.println("Матрица не квадратная " + matrix);
-            }
-            return false;
+        boolean isSquare = true;
+        if (matrix[0].length != matrix.length) {
+            isSquare = false;
+            System.out.println("Matrix is not square  ");
         }
-        return true;
+
+        return isSquare;
     }
 
     public void printMatrix(int[][] matrix) {
@@ -78,26 +80,8 @@ public class WorkWithMassive {
         }
     }
 
-//    public int[][] fillingOfLeftDiagonal(int[][] matrixLeft, int fillerDiagonal) {
-//        if (check(matrixLeft)) {
-//            int[][] tmp = matrixLeft;
-//            for (int i = 0; i < matrixLeft.length; i++) {
-//                for (int j = 0; j < matrixLeft[i].length; j++) {
-//                    if (i == j) {
-//                        matrixLeft[i][j] = fillerDiagonal;
-//                    } else {
-//                        tmp[i][j] = matrixLeft[i][j];
-//                    }
-//                }
-//                matrixLeft = tmp;
-//            }
-//
-//        } else {
-//            System.out.println("------------------------------------------------");
-//        }
-//        return matrixLeft;
-//    }
     public int[][] fillingOfLeftDiagonal(int[][] matrixLeft, int fillerDiagonal) {
+        if (check(matrixLeft)) {
             int[][] tmp = matrixLeft;
             for (int i = 0; i < tmp.length; i++) {
                 for (int j = 0; j < tmp[i].length; j++) {
@@ -109,49 +93,40 @@ public class WorkWithMassive {
                 }
                 matrixLeft = tmp;
             }
-        System.out.println("------------------------------------------------");
-        return matrixLeft;
+            System.out.println("------------------------------------------------");
         }
+        return matrixLeft;
+    }
 
     public int[][] fillingOfRightDiagonal(int[][] matrixRight, int fDiagonal) {
-        int tmp[][] = matrixRight;
-        for (int i = 0; i < tmp.length; i++) {
-            for (int j = 0; j < tmp[i].length; ++j) {
-                if (i + j == tmp[i].length-1) {
-                    tmp[i][j] = fDiagonal;
-                } else {
-                    tmp[i][j] = tmp[i][j];
+        if (check(matrixRight)) {
+            int tmp[][] = matrixRight;
+            for (int i = 0; i < tmp.length; i++) {
+                for (int j = 0; j < tmp[i].length; ++j) {
+                    if (i + j == tmp[i].length - 1) {
+                        tmp[i][j] = fDiagonal;
+                    } else {
+                        tmp[i][j] = tmp[i][j];
+                    }
                 }
+                matrixRight = tmp;
             }
-            matrixRight = tmp;
+            System.out.println("------------------------------------------------");
         }
-        System.out.println("------------------------------------------------");
-
         return matrixRight;
     }
+
     public int[][] fillingBothDiagonal(int[][] matrixBoth, int fDiagonal) {
-        int tmp[][] = matrixBoth;
-        for (int i = 0; i < tmp.length; i++) {
-            for (int j = 0; j < tmp[i].length; ++j) {
-                if (i + j == tmp[i].length - 1) {
-                    tmp[i][j] = fDiagonal;
-                }
-            }
-            for (int j = 0; j < tmp[i].length; j++) {
-                if (i == j) {
-                    tmp[i][j] = fDiagonal;
-                }
-            }
-                else {
-                    tmp[i][j] = tmp[i][j];
-                }
-            }
+        if (check(matrixBoth)) {
+            int tmp[][] = matrixBoth;
+            this.fillingOfLeftDiagonal(tmp, fDiagonal);
+            this.fillingOfRightDiagonal(tmp, fDiagonal);
             matrixBoth = tmp;
         }
-        System.out.println("------------------------------------------------");
-
         return matrixBoth;
+    }
 }
+
 
 
 
