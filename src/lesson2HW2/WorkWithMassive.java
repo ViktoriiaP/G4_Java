@@ -56,6 +56,7 @@ public class WorkWithMassive {
                 matrix[i][j] = filler;
             }
         }
+        printMatrix(matrix);
         System.out.println("------------------------------------------------");
         return matrix;
     }
@@ -95,6 +96,7 @@ public class WorkWithMassive {
             }
             System.out.println("------------------------------------------------");
         }
+        printMatrix(matrixLeft);
         return matrixLeft;
     }
 
@@ -113,6 +115,7 @@ public class WorkWithMassive {
             }
             System.out.println("------------------------------------------------");
         }
+        printMatrix(matrixRight);
         return matrixRight;
     }
 
@@ -123,6 +126,7 @@ public class WorkWithMassive {
             this.fillingOfRightDiagonal(tmp, fDiagonal);
             matrixBoth = tmp;
         }
+        printMatrix(matrixBoth);
         return matrixBoth;
     }
 }
